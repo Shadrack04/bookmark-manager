@@ -3,6 +3,7 @@ import {
   BookOpenIcon,
   Layers2Icon,
   LogOutIcon,
+  Palette,
   PinIcon,
   UserPenIcon,
 } from "lucide-react";
@@ -18,6 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ThemeSwitch from "./theme-switch";
 
 export default function ProfileDisplay() {
   return (
@@ -34,45 +36,44 @@ export default function ProfileDisplay() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-w-64">
-        <DropdownMenuLabel className="flex min-w-0 flex-col">
-          <span className="truncate text-sm font-medium text-foreground">
-            Keith Kennedy
-          </span>
-          <span className="truncate text-xs font-normal text-muted-foreground">
-            k.kennedy@coss.com
-          </span>
+      <DropdownMenuContent sideOffset={12} className="w-64">
+        <DropdownMenuLabel className="flex min-w-0 flex-row items-center gap-4">
+          <div>
+            <Avatar className=" size-12">
+              <AvatarImage
+                src="/origin/avatar.jpg"
+                alt="Profile image"
+                className=""
+              />
+              <AvatarFallback className=" bg-amber-500">KK</AvatarFallback>
+            </Avatar>
+          </div>
+          <div className=" flex flex-col gap-1">
+            <span className="truncate text-sm font-medium text-secondary">
+              Keith Kennedy
+            </span>
+            <span className="truncate text-xs font-normal text-muted-foreground">
+              k.kennedy@coss.com
+            </span>
+          </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 1</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Layers2Icon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 2</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <BookOpenIcon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 3</span>
+          <DropdownMenuItem className=" gap-4 py-6 justify-between">
+            <div className=" flex items-center gap-4">
+              <Palette className="opacity-60 size-6" aria-hidden="true" />
+              <span className=" text-lg">Theme</span>
+            </div>
+            <div>
+              <ThemeSwitch />
+            </div>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <PinIcon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 4</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <UserPenIcon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 5</span>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOutIcon size={16} className="opacity-60" aria-hidden="true" />
-          <span>Logout</span>
+
+        <DropdownMenuItem className=" gap-4">
+          <LogOutIcon className="opacity-60 size-6" aria-hidden="true" />
+          <span className=" text-lg">Logout</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
