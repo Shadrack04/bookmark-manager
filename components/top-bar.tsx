@@ -7,7 +7,7 @@ import SideDrawer from "./side-drawer";
 
 export default function TopBar() {
   return (
-    <nav className=" custom-padding flex items-center justify-between md:jus w-full h-20 bg-foreground">
+    <nav className=" custom-padding flex items-center justify-between w-full h-20 bg-foreground">
       <div className=" flex items-center gap-2 md:gap-4">
         {/* <Menu className=" text-secondary p-2 border-border border-2 size-12 rounded-lg cursor-pointer" /> */}
         <SideDrawer />
