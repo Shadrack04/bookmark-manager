@@ -17,7 +17,7 @@ export default function SideDrawer() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Menu className=" text-secondary p-2 border-border border-2 size-12 rounded-lg cursor-pointer" />
+        <Menu className=" text-secondary p-2 border-border border-2 size-12 rounded-lg cursor-pointer lg:hidden" />
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
