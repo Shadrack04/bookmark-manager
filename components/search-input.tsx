@@ -10,7 +10,7 @@ export default function SearchInput() {
       <div className="relative">
         <Input
           id={id}
-          className="peer ps-9 pe-9 h-12 w-40 placeholder:text-[10px]"
+          className="peer ps-9 pe-9 h-12 w-40 md:w-90 placeholder:text-[10px] md:placeholder:text-lg"
           placeholder="Search by title..."
           type="search"
         />
