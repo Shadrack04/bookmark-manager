@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./logo";
 import { Archive, Home, LucideIcon } from "lucide-react";
 import Link from "next/link";
+import Tags from "./tags";
 
 type NavLinks = {
   href: string;
@@ -24,7 +25,7 @@ const navLinks: NavLinks[] = [
 
 export default function SideBar() {
   return (
-    <div className=" hidden lg:flex flex-col gap-4 w-82 border-1 bg-foreground min-h-screen px-4">
+    <div className=" hidden lg:flex flex-col gap-2 w-82 border-1 bg-foreground min-h-screen px-4">
       <div className="h-20 lg:h-18 flex items-center">
         <Logo />
       </div>
@@ -40,6 +41,8 @@ export default function SideBar() {
           </Link>
         ))}
       </div>
+
+      <Tags />
     </div>
   );
 }
