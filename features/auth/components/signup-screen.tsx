@@ -3,7 +3,7 @@ import { SignupForm } from "./signup-form";
 
 export default function SignupScreen() {
   return (
-    <section>
+    <section className=" flex items-center justify-center h-dvh">
       <SignupForm />
     </section>
   );
