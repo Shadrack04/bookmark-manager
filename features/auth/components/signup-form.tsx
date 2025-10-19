@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 export function SignupForm() {
   const form = useForm();
   return (
-    <Card className=" w-[95%] mx-auto">
+    <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
       <CardHeader>
         <div className=" mb-4">
           <Logo />
