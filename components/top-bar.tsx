@@ -12,6 +12,7 @@ export default function TopBar() {
   const pathName = usePathname();
 
   if (pathName.startsWith("/auth")) return null;
+
   return (
     <nav className=" custom-padding flex items-center justify-between w-full h-20 lg:h-18 bg-foreground">
       <div className=" flex items-center gap-2 md:gap-4">
