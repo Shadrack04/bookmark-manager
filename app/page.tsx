@@ -1,5 +1,7 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <div className="custom-padding"></div>;
+  return (
+    <div className="custom-padding">
+      <div>Bookmarks</div>
+    </div>
+  );
 }
