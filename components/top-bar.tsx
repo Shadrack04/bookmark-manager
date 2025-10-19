@@ -1,11 +1,17 @@
-import { Menu, Plus } from "lucide-react";
+"use client";
+
+import { Plus } from "lucide-react";
 import React from "react";
 import SearchInput from "./search-input";
 import { Button } from "./ui/button";
 import ProfileDisplay from "./profile-display";
 import SideDrawer from "./side-drawer";
+import { usePathname } from "next/navigation";
 
 export default function TopBar() {
+  const pathName = usePathname();
+
+  if (pathName.startsWith("/auth")) return null;
   return (
     <nav className=" custom-padding flex items-center justify-between w-full h-20 lg:h-18 bg-foreground">
       <div className=" flex items-center gap-2 md:gap-4">
