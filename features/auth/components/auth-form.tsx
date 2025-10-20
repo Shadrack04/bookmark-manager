@@ -24,11 +24,18 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 type AuthFormProps = {
+  title: string;
+  description: string;
   type: "register" | "login";
   onSubmit?: () => void;
 };
 
-export default function AuthForm({ type, onSubmit }: AuthFormProps) {
+export default function AuthForm({
+  type,
+  onSubmit,
+  title,
+  description,
+}: AuthFormProps) {
   const form = useForm();
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
@@ -36,11 +43,8 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
         <div className=" mb-4">
           <Logo />
         </div>
-        <CardTitle className=" text-2xl">Create your account</CardTitle>
-        <CardDescription className=" text-md">
-          Join us and start saving your favorite links-organized, searchable and
-          always within reach
-        </CardDescription>
+        <CardTitle className=" text-2xl">{title}</CardTitle>
+        <CardDescription className=" text-md">{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -111,9 +115,9 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
                 )}
               />
             </div>
-            <div className=" flex my-4">
+            <div className=" flex mt-4">
               <Button type="submit" className="w-full">
-                Create account
+                {type === "register" ? "Create account" : "Log in"}
               </Button>
             </div>
           </form>
@@ -121,7 +125,7 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
       </CardContent>
       <CardFooter className="flex-col gap-2">
         {type === "login" && (
-          <p>
+          <p className=" text-sm text-muted">
             Forgot password?
             <Link
               href="/auth/reset-password"
@@ -132,7 +136,7 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
           </p>
         )}
 
-        <p>
+        <p className=" text-sm text-muted">
           {type === "register"
             ? "Already have an account?"
             : "Don't have an account?"}
@@ -141,7 +145,7 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
             href={type === "login" ? "/auth/sign-in" : "/auth/sign-in"}
             className=" font-medium text-secondary cursor-pointer"
           >
-            {type === "register" ? "Log in" : "Register"}
+            {type === "register" ? "Log in" : "Sign up"}
           </Link>
         </p>
       </CardFooter>
