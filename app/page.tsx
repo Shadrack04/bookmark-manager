@@ -1,4 +1,4 @@
-import BookmarkScreen from "@/features/bookmark/bookmark-screen";
+import BookmarkScreen from "@/features/bookmark/components/bookmark-screen";
 
 export default function Home() {
   return (
