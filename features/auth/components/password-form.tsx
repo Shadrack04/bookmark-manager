@@ -169,7 +169,7 @@ export default function PasswordForm({
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
+      <CardFooter className="flex-col">
         <Link
           href="/auth/sign-in"
           className=" font-medium text-secondary cursor-pointer"
