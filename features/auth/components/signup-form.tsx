@@ -10,7 +10,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -33,40 +41,71 @@ export function SignupForm() {
       <CardContent>
         <Form {...form}>
           <form>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Full Name</Label>
-                <Input
-                  id="fullName"
-                  type="text"
-                  placeholder="Enter full name"
-                  required
-                />
-              </div>
+            <div className="flex flex-col gap-2">
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={(field) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        id="fullName"
+                        type="text"
+                        {...field}
+                        placeholder="Enter full name"
+                        required
+                      />
+                    </FormControl>
+                    <FormDescription />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
+              <FormField
+                control={form.control}
+                name="email"
+                render={(field) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        id="email"
+                        type="email"
+                        {...field}
+                        placeholder="m@example.com"
+                        required
+                      />
+                    </FormControl>
+                    <FormDescription />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={(field) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        id="password"
+                        type="password"
+                        {...field}
+                        placeholder="Enter Password"
+                        required
+                      />
+                    </FormControl>
+                    <FormDescription />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
-            <div className=" flex ">
+            <div className=" flex my-4">
               <Button type="submit" className="w-full">
                 Create account
               </Button>
@@ -76,7 +115,13 @@ export function SignupForm() {
       </CardContent>
       <CardFooter className="flex-col gap-2">
         <p>
-          Already have an account? <Link href="/sign-in">Log in</Link>
+          Already have an account?
+          <Link
+            href="/auth/sign-in"
+            className=" font-medium text-secondary cursor-pointer"
+          >
+            Log in
+          </Link>
         </p>
       </CardFooter>
     </Card>
