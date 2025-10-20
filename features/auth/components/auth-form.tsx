@@ -20,11 +20,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
-export function SignupForm() {
+type AuthFormProps = {
+  type: "register" | "login";
+  onSubmit?: () => void;
+};
+
+export default function AuthForm({ type, onSubmit }: AuthFormProps) {
   const form = useForm();
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
@@ -42,26 +46,28 @@ export function SignupForm() {
         <Form {...form}>
           <form>
             <div className="flex flex-col gap-2">
-              <FormField
-                control={form.control}
-                name="fullName"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>Full Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="fullName"
-                        type="text"
-                        {...field}
-                        placeholder="Enter full name"
-                        required
-                      />
-                    </FormControl>
-                    <FormDescription />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {type === "register" && (
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="fullName"
+                          type="text"
+                          {...field}
+                          placeholder="Enter full name"
+                          required
+                        />
+                      </FormControl>
+                      <FormDescription />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
 
               <FormField
                 control={form.control}
@@ -114,13 +120,28 @@ export function SignupForm() {
         </Form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
+        {type === "login" && (
+          <p>
+            Forgot password?
+            <Link
+              href="/auth/reset-password"
+              className=" font-medium text-secondary cursor-pointer"
+            >
+              Reset it
+            </Link>
+          </p>
+        )}
+
         <p>
-          Already have an account?
+          {type === "register"
+            ? "Already have an account?"
+            : "Don't have an account?"}
+
           <Link
-            href="/auth/sign-in"
+            href={type === "login" ? "/auth/sign-in" : "/auth/sign-in"}
             className=" font-medium text-secondary cursor-pointer"
           >
-            Log in
+            {type === "register" ? "Log in" : "Register"}
           </Link>
         </p>
       </CardFooter>

@@ -1,10 +1,10 @@
 import React from "react";
-import { SignupForm } from "./signup-form";
+import AuthForm from "./auth-form";
 
 export default function SignupScreen() {
   return (
     <section className=" flex items-center justify-center h-dvh">
-      <SignupForm />
+      <AuthForm type="register" />
     </section>
   );
 }
