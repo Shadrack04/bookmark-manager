@@ -118,48 +118,6 @@ export default function PasswordForm({
                   />
                 </>
               )}
-
-              {/* <FormField
-                control={form.control}
-                name="email"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="email"
-                        type="email"
-                        {...field}
-                        placeholder="m@example.com"
-                        required
-                      />
-                    </FormControl>
-                    <FormDescription />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              /> */}
-
-              {/* <FormField
-                control={form.control}
-                name="password"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="password"
-                        type="password"
-                        {...field}
-                        placeholder="Enter Password"
-                        required
-                      />
-                    </FormControl>
-                    <FormDescription />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              /> */}
             </div>
             <div className=" flex mt-4">
               <Button type="submit" className="w-full">
