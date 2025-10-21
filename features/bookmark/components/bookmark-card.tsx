@@ -13,7 +13,7 @@ import TagCard from "./tag-card";
 export default function BookmarkCard() {
   return (
     <Card className=" gap-4">
-      <CardHeader className=" ">
+      <CardHeader className=" px-4">
         <div className="flex justify-between">
           <div className=" flex items-center gap-4 ">
             <Image
@@ -33,12 +33,12 @@ export default function BookmarkCard() {
             </div>
           </div>
 
-          <EllipsisVertical className=" size-7 p-0.5 border-2 border-border rounded-md" />
+          <EllipsisVertical className=" size-7 hover:bg-background p-0.5 border-2 border-border rounded-md" />
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
 
-      <CardContent className="">
+      <CardContent className=" px-4">
         <p className=" text-sm text-muted">
           The library for the web and native user interfaces. Build user
           interface out of individual pieces called components
