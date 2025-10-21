@@ -21,17 +21,19 @@ export default function BookmarkCard() {
               alt="Favicon"
               width={60}
               height={60}
-              className=" p-1 border-2 border-border rounded-md"
+              className=" p-1 size-10 border-2 border-border rounded-md"
             />
             <div className=" flex flex-col ">
-              <p className=" text-xl text-secondary font-bold">
+              <p className=" text-xl lg:text-lg text-secondary font-bold">
                 Frontend Mentor
               </p>
-              <Link href="#">frontendmentor.io</Link>
+              <Link href="#" className=" text-xs">
+                frontendmentor.io
+              </Link>
             </div>
           </div>
 
-          <EllipsisVertical className=" size-9 p-1 border-2 border-border rounded-md" />
+          <EllipsisVertical className=" size-7 p-0.5 border-2 border-border rounded-md" />
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
@@ -52,21 +54,21 @@ export default function BookmarkCard() {
       <CardFooter className=" justify-between">
         <div className=" flex items-center gap-3">
           <div className=" flex items-center gap-1 text-muted">
-            <Eye className=" size-5" />
-            <span>152</span>
+            <Eye className=" size-4" />
+            <span className=" text-xs">152</span>
           </div>
 
           <div className=" flex items-center gap-1 text-muted">
-            <Clock className=" size-5" />
-            <span>24 Sep</span>
+            <Clock className=" size-4" />
+            <span className=" text-xs">24 Sep</span>
           </div>
 
           <div className=" flex items-center gap-1 text-muted">
-            <Calendar className=" size-5" />
-            <span>10 Jan</span>
+            <Calendar className=" size-4" />
+            <span className=" text-xs">10 Jan</span>
           </div>
         </div>
-        <Pin className=" size-5 text-muted" />
+        <Pin className=" size-4 text-muted" />
       </CardFooter>
     </Card>
   );
