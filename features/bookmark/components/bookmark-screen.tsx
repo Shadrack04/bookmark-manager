@@ -9,7 +9,9 @@ export default function BookmarkScreen() {
         <h1 className=" text-secondary font-medium text-2xl">All bookmarks</h1>
         <Sort />
       </div>
-      <div>
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+        <BookmarkCard />
+        <BookmarkCard />
         <BookmarkCard />
       </div>
     </section>
