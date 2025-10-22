@@ -32,30 +32,24 @@ export default function Sort() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Card className=" p-3 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
-          <ArrowDownUp className=" text-secondary" />
-          <p className=" text-secondary text-md font-medium">Sort by</p>
+        <Card className=" px-3 py-2 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
+          <ArrowDownUp className=" text-secondary size-5" />
+          <p className=" text-secondary text-sm font-medium">Sort by</p>
         </Card>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className=" w-48">
         <DropdownMenuCheckboxItem checked={nextjs} onCheckedChange={setNextjs}>
-          Next.js
+          Recently added
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={sveltekit}
           onCheckedChange={setSveltekit}
         >
-          SvelteKit
+          Recently visited
         </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={remix}
-          onCheckedChange={setRemix}
-          disabled
-        >
-          Remix
-        </DropdownMenuCheckboxItem>
+
         <DropdownMenuCheckboxItem checked={astro} onCheckedChange={setAstro}>
-          Astro
+          Most visited
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>

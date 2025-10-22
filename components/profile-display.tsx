@@ -59,10 +59,10 @@ export default function ProfileDisplay() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className=" gap-4 py-6 justify-between">
+          <DropdownMenuItem className=" gap-4 py-3 justify-between">
             <div className=" flex items-center gap-4">
-              <Palette className="opacity-60 size-6" aria-hidden="true" />
-              <span className=" text-lg">Theme</span>
+              <Palette className="opacity-60 size-5" aria-hidden="true" />
+              <span className=" text-lg lg:text-md">Theme</span>
             </div>
             <div>
               <ThemeSwitch />
@@ -72,8 +72,8 @@ export default function ProfileDisplay() {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem className=" gap-4">
-          <LogOutIcon className="opacity-60 size-6" aria-hidden="true" />
-          <span className=" text-lg">Logout</span>
+          <LogOutIcon className="opacity-60 size-5" aria-hidden="true" />
+          <span className=" text-lg lg:text-md">Logout</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
