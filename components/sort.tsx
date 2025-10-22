@@ -1,12 +1,63 @@
+"use client";
+
+import { useState } from "react";
+
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { ArrowDownUp } from "lucide-react";
-import React from "react";
 import { Card } from "./ui/card";
 
+// export default function Sort() {
+//   return (
+//     <Card className=" p-3 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
+//       <ArrowDownUp className=" text-secondary" />
+//       <p className=" text-secondary text-md font-medium">Sort by</p>
+//     </Card>
+//   );
+// }
+
+type Checked = boolean;
+
 export default function Sort() {
+  const [nextjs, setNextjs] = useState<Checked>(false);
+  const [sveltekit, setSveltekit] = useState<Checked>(true);
+  const [astro, setAstro] = useState<Checked>(false);
+  const [remix, setRemix] = useState<Checked>(false);
+
   return (
-    <Card className=" p-3 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
-      <ArrowDownUp className=" text-secondary" />
-      <p className=" text-secondary text-md font-medium">Sort by</p>
-    </Card>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Card className=" p-3 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
+          <ArrowDownUp className=" text-secondary" />
+          <p className=" text-secondary text-md font-medium">Sort by</p>
+        </Card>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuCheckboxItem checked={nextjs} onCheckedChange={setNextjs}>
+          Next.js
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={sveltekit}
+          onCheckedChange={setSveltekit}
+        >
+          SvelteKit
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={remix}
+          onCheckedChange={setRemix}
+          disabled
+        >
+          Remix
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem checked={astro} onCheckedChange={setAstro}>
+          Astro
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

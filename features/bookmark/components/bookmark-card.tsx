@@ -33,7 +33,7 @@ export default function BookmarkCard() {
             </div>
           </div>
 
-          <EllipsisVertical className=" size-7 hover:bg-background p-0.5 border-2 border-border rounded-md" />
+          <EllipsisVertical className=" size-7 cursor-pointer hover:bg-background p-0.5 border-2 border-border rounded-md" />
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
@@ -68,7 +68,7 @@ export default function BookmarkCard() {
             <span className=" text-xs">10 Jan</span>
           </div>
         </div>
-        <Pin className=" size-4 text-muted" />
+        <Pin className=" size-4 text-primary" />
       </CardFooter>
     </Card>
   );
