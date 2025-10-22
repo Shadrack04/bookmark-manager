@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import TagCard from "./tag-card";
+import BookmarkDropdown from "./bookmark-card-dropdown";
 
 export default function BookmarkCard() {
   return (
@@ -32,8 +33,8 @@ export default function BookmarkCard() {
               </Link>
             </div>
           </div>
-
-          <EllipsisVertical className=" size-7 cursor-pointer hover:bg-background p-0.5 border-2 border-border rounded-md" />
+          <BookmarkDropdown />
+          {/* <EllipsisVertical className=" size-7 cursor-pointer hover:bg-background p-0.5 border-2 border-border rounded-md" /> */}
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
