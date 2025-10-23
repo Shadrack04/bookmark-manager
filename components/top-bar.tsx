@@ -22,7 +22,7 @@ export default function TopBar() {
       </div>
       <div className=" flex items-center gap-2 md:gap-4">
         <Button className=" px-2 md:px-6 py-3 h-auto">
-          <Plus className=" size-6" />{" "}
+          <Plus className=" size-6 text-white" />
           <span className=" hidden md:block text-white">Add Bookmark</span>
         </Button>
         <ProfileDisplay />

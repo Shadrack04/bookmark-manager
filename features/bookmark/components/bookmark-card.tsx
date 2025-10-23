@@ -16,13 +16,13 @@ export default function BookmarkCard() {
     <Card className=" gap-4">
       <CardHeader className=" px-4">
         <div className="flex justify-between">
-          <div className=" flex items-center gap-4 ">
+          <div className=" flex items-center gap-3 ">
             <Image
               src="/favicon-frontend-mentor.png"
               alt="Favicon"
               width={60}
               height={60}
-              className=" p-1 size-10 border-2 border-border rounded-md"
+              className=" size-10 border-1 border-border rounded-md"
             />
             <div className=" flex flex-col ">
               <p className=" text-xl lg:text-lg text-secondary font-bold">
