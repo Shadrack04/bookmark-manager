@@ -124,3 +124,7 @@
 .custom-padding {
   @apply px-4 md:px-6;
 }
+
+/* .custom-sort-menu [data-radix-dropdown-menu-item-indicator] {
+  display: none !important;
+} */

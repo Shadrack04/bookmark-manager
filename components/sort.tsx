@@ -7,27 +7,15 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
 
-import { ArrowDownUp } from "lucide-react";
+import { ArrowDownUp, CheckIcon } from "lucide-react";
 import { Card } from "./ui/card";
 
-// export default function Sort() {
-//   return (
-//     <Card className=" p-3 bg-foreground hover:bg-transparent flex-row items-center gap-1 rounded-md border-1 border-secondary/50 cursor-pointer shadow-sm">
-//       <ArrowDownUp className=" text-secondary" />
-//       <p className=" text-secondary text-md font-medium">Sort by</p>
-//     </Card>
-//   );
-// }
-
-type Checked = boolean;
-
 export default function Sort() {
-  const [nextjs, setNextjs] = useState<Checked>(false);
-  const [sveltekit, setSveltekit] = useState<Checked>(true);
-  const [astro, setAstro] = useState<Checked>(false);
-  const [remix, setRemix] = useState<Checked>(false);
+  const [sortOption, setSortOption] = useState<string>("recently-added");
 
   return (
     <DropdownMenu>
@@ -37,20 +25,39 @@ export default function Sort() {
           <p className=" text-secondary text-sm font-medium">Sort by</p>
         </Card>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className=" w-48">
-        <DropdownMenuCheckboxItem checked={nextjs} onCheckedChange={setNextjs}>
-          Recently added
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={sveltekit}
-          onCheckedChange={setSveltekit}
+      <DropdownMenuContent className=" custom-sort-menu w-48 bg-foreground">
+        <DropdownMenuRadioGroup
+          value={sortOption}
+          onValueChange={setSortOption}
         >
-          Recently visited
-        </DropdownMenuCheckboxItem>
+          <DropdownMenuRadioItem
+            value="recently-added"
+            className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
+          >
+            Recently added
+            {sortOption === "recently-added" && (
+              <CheckIcon className="size-4" />
+            )}
+          </DropdownMenuRadioItem>
 
-        <DropdownMenuCheckboxItem checked={astro} onCheckedChange={setAstro}>
-          Most visited
-        </DropdownMenuCheckboxItem>
+          <DropdownMenuRadioItem
+            value="recently-visited"
+            className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
+          >
+            Recently visited
+            {sortOption === "recently-visited" && (
+              <CheckIcon className="size-4" />
+            )}
+          </DropdownMenuRadioItem>
+
+          <DropdownMenuRadioItem
+            value="most-visited"
+            className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
+          >
+            Most visited
+            {sortOption === "most-visited" && <CheckIcon className="size-4" />}
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

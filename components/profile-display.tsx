@@ -1,12 +1,4 @@
-import {
-  BoltIcon,
-  BookOpenIcon,
-  Layers2Icon,
-  LogOutIcon,
-  Palette,
-  PinIcon,
-  UserPenIcon,
-} from "lucide-react";
+import { LogOutIcon, Palette } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -36,7 +28,7 @@ export default function ProfileDisplay() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={12} className="w-64">
+      <DropdownMenuContent sideOffset={12} className="w-64 bg-foreground">
         <DropdownMenuLabel className="flex min-w-0 flex-row items-center gap-4">
           <div>
             <Avatar className=" size-12">
@@ -59,7 +51,10 @@ export default function ProfileDisplay() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className=" gap-4 py-3 justify-between">
+          <DropdownMenuItem
+            onSelect={(e) => e.preventDefault()}
+            className=" gap-4 py-3 justify-between"
+          >
             <div className=" flex items-center gap-4">
               <Palette className="opacity-60 size-5" aria-hidden="true" />
               <span className=" text-lg lg:text-md">Theme</span>
