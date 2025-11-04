@@ -4,6 +4,7 @@ import "./globals.css";
 import TopBar from "@/components/top-bar";
 import SideBar from "@/components/side-bar";
 import ThemeProvider from "@/provider/theme-provider";
+import AppProvider from "@/provider/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-full`}
       >
-        <ThemeProvider>
-          <SideBar />
-          <main className=" w-full">
-            <TopBar />
-            {children}
-          </main>
-        </ThemeProvider>
+        <AppProvider>
+          <ThemeProvider>
+            <SideBar />
+            <main className=" w-full">
+              <TopBar />
+              {children}
+            </main>
+          </ThemeProvider>
+        </AppProvider>
       </body>
     </html>
   );
