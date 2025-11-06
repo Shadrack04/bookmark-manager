@@ -22,6 +22,8 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signInSchema, SignInType } from "../validation";
 
 // type AuthFormProps = {
 //   title: string;
@@ -31,7 +33,17 @@ import { useForm } from "react-hook-form";
 // };
 
 export default function SignInForm() {
-  const form = useForm();
+  const form = useForm<SignInType>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (data: SignInType) => {
+    console.log(data);
+  };
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
       <CardHeader>
@@ -45,12 +57,12 @@ export default function SignInForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <FormField
                 control={form.control}
                 name="email"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
@@ -71,7 +83,7 @@ export default function SignInForm() {
               <FormField
                 control={form.control}
                 name="password"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
@@ -109,7 +121,7 @@ export default function SignInForm() {
         </p>
 
         <p className=" text-sm text-muted">
-          Don&apos:t have an account?
+          Don&apos;t have an account?
           <Link
             href="/auth/sign-up"
             className=" font-medium text-secondary cursor-pointer"

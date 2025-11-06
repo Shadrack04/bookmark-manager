@@ -20,8 +20,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { signUpSchema, SignUpType } from "../validation";
 
 // type AuthFormProps = {
 //   title: string;
@@ -31,7 +33,13 @@ import { useForm } from "react-hook-form";
 // };
 
 export default function SignUpForm() {
-  const form = useForm();
+  const form = useForm<SignUpType>({
+    resolver: zodResolver(signUpSchema),
+  });
+
+  const onSubmit = (data: SignUpType) => {
+    console.log(data);
+  };
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
       <CardHeader>
@@ -46,12 +54,12 @@ export default function SignUpForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <FormField
                 control={form.control}
-                name="fullName"
-                render={(field) => (
+                name="name"
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
@@ -72,7 +80,7 @@ export default function SignUpForm() {
               <FormField
                 control={form.control}
                 name="email"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
@@ -93,7 +101,7 @@ export default function SignUpForm() {
               <FormField
                 control={form.control}
                 name="password"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
