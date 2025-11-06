@@ -24,6 +24,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema, SignInType } from "../validation";
+import { useSignin } from "../hooks/use-sign-in";
 
 // type AuthFormProps = {
 //   title: string;
@@ -33,6 +34,7 @@ import { signInSchema, SignInType } from "../validation";
 // };
 
 export default function SignInForm() {
+  const { mutate } = useSignin();
   const form = useForm<SignInType>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -43,6 +45,7 @@ export default function SignInForm() {
 
   const onSubmit = (data: SignInType) => {
     console.log(data);
+    mutate(data);
   };
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
