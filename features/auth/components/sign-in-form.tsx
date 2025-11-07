@@ -34,7 +34,8 @@ import { useSignin } from "../hooks/use-sign-in";
 // };
 
 export default function SignInForm() {
-  const { mutate } = useSignin();
+  const { mutate, isPending } = useSignin();
+  console.log({ isPending });
   const form = useForm<SignInType>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -105,8 +106,8 @@ export default function SignInForm() {
               />
             </div>
             <div className=" flex mt-4">
-              <Button type="submit" className="w-full">
-                Log in
+              <Button type="submit" className="w-full text-secondary">
+                {isPending ? "Logging in..." : "Log in"}
               </Button>
             </div>
           </form>
