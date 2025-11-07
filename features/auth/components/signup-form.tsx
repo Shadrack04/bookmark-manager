@@ -24,6 +24,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { signUpSchema, SignUpType } from "../validation";
+import { useSignUp } from "../hooks/use-sign-up";
+import { useSessionStore } from "@/store/session";
 
 // type AuthFormProps = {
 //   title: string;
@@ -33,12 +35,16 @@ import { signUpSchema, SignUpType } from "../validation";
 // };
 
 export default function SignUpForm() {
+  const { mutate, isPending } = useSignUp();
+  const { token } = useSessionStore();
+  console.log({ token });
   const form = useForm<SignUpType>({
     resolver: zodResolver(signUpSchema),
   });
 
   const onSubmit = (data: SignUpType) => {
     console.log(data);
+    mutate(data);
   };
   return (
     <Card className=" w-[95%] md:w-[50%] lg:w-[30%] mx-auto">
@@ -120,8 +126,8 @@ export default function SignUpForm() {
               />
             </div>
             <div className=" flex mt-4">
-              <Button type="submit" className="w-full">
-                Create account
+              <Button type="submit" className="w-full text-secondary">
+                {isPending ? "Creating account..." : "Create account"}
               </Button>
             </div>
           </form>

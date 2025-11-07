@@ -5,7 +5,7 @@ type Data = {
   user: User;
 };
 
-export type SignInResponse = {
+export type AuthResponse = {
   data: {
     message: string;
     success: boolean;
