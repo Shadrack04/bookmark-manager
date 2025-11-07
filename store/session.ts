@@ -1,10 +1,11 @@
+import { User } from "@/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface SessionState {
   token: string | null;
-  user: any;
-  setSession: (token: string, user: any) => void;
+  user: User | null;
+  setSession: (token: string, user: User) => void;
   clearSession: () => void;
 }
 

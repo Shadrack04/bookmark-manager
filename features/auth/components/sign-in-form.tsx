@@ -25,6 +25,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema, SignInType } from "../validation";
 import { useSignin } from "../hooks/use-sign-in";
+import { useSessionStore } from "@/store/session";
 
 // type AuthFormProps = {
 //   title: string;
@@ -35,6 +36,8 @@ import { useSignin } from "../hooks/use-sign-in";
 
 export default function SignInForm() {
   const { mutate, isPending } = useSignin();
+  const { token } = useSessionStore();
+  console.log({ token });
   console.log({ isPending });
   const form = useForm<SignInType>({
     resolver: zodResolver(signInSchema),
