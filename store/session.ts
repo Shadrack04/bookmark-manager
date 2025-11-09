@@ -1,3 +1,4 @@
+import { COOKIE_NAME } from "@/constants";
 import { User } from "@/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -17,6 +18,6 @@ export const useSessionStore = create<SessionState>()(
       setSession: (token, user) => set({ token, user }),
       clearSession: () => set({ token: null, user: null }),
     }),
-    { name: "session-storage", storage: createJSONStorage(() => localStorage) }
+    { name: COOKIE_NAME, storage: createJSONStorage(() => localStorage) }
   )
 );
