@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { LogOutIcon, Palette } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,7 +14,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitch from "./theme-switch";
 
+import { useSessionStore } from "@/store/session";
+import { COOKIE_NAME } from "@/constants";
+
 export default function ProfileDisplay() {
+  const { clearSession } = useSessionStore();
+  const handleSignOut = () => {
+    clearSession();
+
+    Cookies.remove(COOKIE_NAME, {
+      path: "/",
+    });
+
+    window.location.href = "/auth/sign-in";
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -66,7 +81,7 @@ export default function ProfileDisplay() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className=" gap-4">
+        <DropdownMenuItem onClick={handleSignOut} className=" gap-4">
           <LogOutIcon className="opacity-60 size-5" aria-hidden="true" />
           <span className=" text-lg lg:text-md">Logout</span>
         </DropdownMenuItem>
