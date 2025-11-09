@@ -6,7 +6,7 @@ type TagCardProps = {
 
 export default function TagCard({ tagName }: TagCardProps) {
   return (
-    <p className=" p-2 bg-background text-muted text-sm rounded-md">
+    <p className=" p-2 bg-background text-muted text-xs rounded-md">
       {tagName}
     </p>
   );

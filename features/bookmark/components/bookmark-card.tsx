@@ -10,8 +10,20 @@ import Link from "next/link";
 import React from "react";
 import TagCard from "./tag-card";
 import BookmarkDropdown from "./bookmark-card-dropdown";
+import { Bookmark } from "../types";
 
-export default function BookmarkCard() {
+export default function BookmarkCard({
+  favicon,
+  title,
+  url,
+  description,
+  tags,
+  isArchived,
+  pinned,
+  _id,
+  visitCount,
+  lastVisited,
+}: Bookmark) {
   return (
     <Card className=" gap-4">
       <CardHeader className=" px-4">
@@ -26,27 +38,27 @@ export default function BookmarkCard() {
             />
             <div className=" flex flex-col ">
               <p className=" text-xl lg:text-lg text-secondary font-bold">
-                Frontend Mentor
+                {title}
               </p>
-              <Link href="#" className=" text-xs">
-                frontendmentor.io
+              <Link href={url} target="_blank" className=" text-xs">
+                {url.slice(8)}
               </Link>
             </div>
           </div>
-          <BookmarkDropdown />
+          <BookmarkDropdown id={_id} />
           {/* <EllipsisVertical className=" size-7 cursor-pointer hover:bg-background p-0.5 border-2 border-border rounded-md" /> */}
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
 
       <CardContent className=" px-4">
-        <p className=" text-sm text-muted">
-          The library for the web and native user interfaces. Build user
-          interface out of individual pieces called components
-        </p>
+        <p className=" text-sm text-muted">{description}</p>
         <div className=" flex items-center gap-3 my-4">
-          <TagCard tagName="Practice" />
-          <TagCard tagName="Practice" />
+          {tags?.map((tag) => (
+            <TagCard key={tag} tagName={tag} />
+          ))}
+          {/* <TagCard tagName="Practice" />
+          <TagCard tagName="Practice" /> */}
         </div>
 
         <div className="w-full h-[1px] my-1 bg-muted/50" />

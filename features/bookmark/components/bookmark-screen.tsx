@@ -1,6 +1,8 @@
 import Sort from "@/components/sort";
 import React from "react";
 import BookmarkCard from "./bookmark-card";
+import Bookmarks from "./bookmarks";
+import { useGetBookmarks } from "../hooks/useGetBookmarks";
 
 export default function BookmarkScreen() {
   return (
@@ -9,11 +11,7 @@ export default function BookmarkScreen() {
         <h1 className=" text-secondary font-medium text-2xl">All bookmarks</h1>
         <Sort />
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">
-        <BookmarkCard />
-        <BookmarkCard />
-        <BookmarkCard />
-      </div>
+      <Bookmarks />
     </section>
   );
 }

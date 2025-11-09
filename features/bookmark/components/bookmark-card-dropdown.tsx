@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function BookmarkDropdown() {
+export default function BookmarkDropdown({ id }: { id: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
