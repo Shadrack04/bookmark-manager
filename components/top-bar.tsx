@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import ProfileDisplay from "./profile-display";
 import SideDrawer from "./side-drawer";
 import { usePathname } from "next/navigation";
+import BookmarkModal from "@/features/bookmark/components/bookmark-modal";
 
 export default function TopBar() {
   const pathName = usePathname();
@@ -21,10 +22,11 @@ export default function TopBar() {
         <SearchInput />
       </div>
       <div className=" flex items-center gap-2 md:gap-4">
-        <Button className=" px-2 md:px-6 py-3 h-auto">
+        {/* <Button className=" px-2 md:px-6 py-3 h-auto">
           <Plus className=" size-6 text-white" />
           <span className=" hidden md:block text-white">Add Bookmark</span>
-        </Button>
+        </Button> */}
+        <BookmarkModal />
         <ProfileDisplay />
       </div>
     </nav>

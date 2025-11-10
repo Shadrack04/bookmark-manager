@@ -81,7 +81,7 @@ export default function BookmarkDropdown({
 
         <DropdownMenuItem onClick={handleUpdateArchivedStatus}>
           <Archive size={16} className="opacity-60" aria-hidden="true" />
-          {isArchived ? "Unarchive" : "Archived"}
+          {isArchived ? "Unarchive" : "Archive"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
