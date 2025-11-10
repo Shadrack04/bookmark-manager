@@ -1,6 +1,7 @@
 import {
   GET_ALL_BOOKMARKS_ENDPOINT,
   GET_BOOKMARK_ENDPOINT,
+  UPDATE_VIEW_COUNT_ENDPOINT,
 } from "@/constants/endpoint";
 import api from "@/lib/axios";
 import { BookmarkResponse } from "../types";
@@ -11,4 +12,12 @@ export const getAllBookmarks = async (): Promise<BookmarkResponse> => {
 
 export const getBookmarkById = async (id: string) => {
   return await api.get(GET_BOOKMARK_ENDPOINT(id));
+};
+
+export const updateViewCount = async (id: string) => {
+  return await api.patch(UPDATE_VIEW_COUNT_ENDPOINT(id));
+};
+
+export const updateBookmarkById = async (id: string, data) => {
+  return await api.put(UPDATE_VIEW_COUNT_ENDPOINT(id, data));
 };

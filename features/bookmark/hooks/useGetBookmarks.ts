@@ -5,5 +5,6 @@ export const useGetBookmarks = () => {
   return useQuery({
     queryKey: ["bookmarks"],
     queryFn: getAllBookmarks,
+    retry: true,
   });
 };

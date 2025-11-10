@@ -68,7 +68,7 @@ export default function BookmarkCard({
         <div className=" flex items-center gap-3">
           <div className=" flex items-center gap-1 text-muted">
             <Eye className=" size-4" />
-            <span className=" text-xs">152</span>
+            <span className=" text-xs">{visitCount}</span>
           </div>
 
           <div className=" flex items-center gap-1 text-muted">

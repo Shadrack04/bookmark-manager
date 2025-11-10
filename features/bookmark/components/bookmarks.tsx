@@ -6,10 +6,14 @@ import { useGetBookmarks } from "../hooks/useGetBookmarks";
 import Loading from "@/features/bookmark/components/loading";
 
 export default function Bookmarks() {
-  const { data, isPending } = useGetBookmarks();
+  const { data, isPending, isError, error } = useGetBookmarks();
 
   if (isPending) {
     return <Loading />;
+  }
+
+  if (isError) {
+    console.log(error);
   }
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">
