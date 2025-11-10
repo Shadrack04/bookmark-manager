@@ -31,3 +31,8 @@ export type BookmarkResponse = {
     data: Bookmark[];
   };
 };
+
+export type UpdateRequestData = {
+  pinned?: boolean;
+  isArchived?: boolean;
+};

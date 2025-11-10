@@ -20,12 +20,38 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useUpdateViewCount } from "../hooks/use-update-view-count";
+import { useUpdateBookmark } from "../hooks/use-update-bookmark";
 
-export default function BookmarkDropdown({ id }: { id: string }) {
+type BookmarkDropdownProps = {
+  id: string;
+  pinned: boolean;
+  isArchived: boolean;
+};
+
+export default function BookmarkDropdown({
+  id,
+  pinned,
+  isArchived,
+}: BookmarkDropdownProps) {
   const { mutate: updateViewCount } = useUpdateViewCount(id);
+
+  const { mutate: updatePinStatues } = useUpdateBookmark(id, {
+    pinned: !pinned,
+  });
+
+  const { mutate: updateArchivedStatues } = useUpdateBookmark(id, {
+    isArchived: !isArchived,
+  });
 
   const handleUpdateViewCount = () => {
     updateViewCount();
+  };
+
+  const handleUpdatePinStatus = () => {
+    updatePinStatues();
+  };
+  const handleUpdateArchivedStatus = () => {
+    updateArchivedStatues();
   };
   return (
     <DropdownMenu>
@@ -43,9 +69,9 @@ export default function BookmarkDropdown({ id }: { id: string }) {
           Copy Url
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleUpdatePinStatus}>
           <Pin size={16} className="opacity-60" aria-hidden="true" />
-          Unpin
+          {pinned ? "Unpin" : "Pin"}
         </DropdownMenuItem>
 
         <DropdownMenuItem>
@@ -53,9 +79,9 @@ export default function BookmarkDropdown({ id }: { id: string }) {
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleUpdateArchivedStatus}>
           <Archive size={16} className="opacity-60" aria-hidden="true" />
-          Archive
+          {isArchived ? "Unarchive" : "Archived"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

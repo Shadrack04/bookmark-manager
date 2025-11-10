@@ -45,7 +45,7 @@ export default function BookmarkCard({
               </Link>
             </div>
           </div>
-          <BookmarkDropdown id={_id} />
+          <BookmarkDropdown id={_id} pinned={pinned} isArchived={isArchived} />
           {/* <EllipsisVertical className=" size-7 cursor-pointer hover:bg-background p-0.5 border-2 border-border rounded-md" /> */}
         </div>
         <div className="w-full h-[1px] my-1 bg-muted/50" />
