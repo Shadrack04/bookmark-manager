@@ -1,4 +1,5 @@
 import {
+  CREATE_BOOKMARK_ENDPOINT,
   GET_ALL_BOOKMARKS_ENDPOINT,
   GET_BOOKMARK_ENDPOINT,
   UPDATE_BOOKMARK_BY_ID,
@@ -24,4 +25,8 @@ export const updateBookmarkById = async (
   data: UpdateRequestData
 ) => {
   return await api.put(UPDATE_BOOKMARK_BY_ID(id), data);
+};
+
+export const createBookmark = async (data: BookmarkResponse) => {
+  return await api.post(CREATE_BOOKMARK_ENDPOINT, data);
 };

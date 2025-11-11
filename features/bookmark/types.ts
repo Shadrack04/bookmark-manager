@@ -13,6 +13,13 @@
 // __v: 0;
 // _id: "69071eeb223b6961d693abbb";
 
+export type BookmarkRequest = {
+  title: string;
+  url: string;
+  description: string;
+  tags: [string];
+};
+
 export type Bookmark = {
   title: string;
   url: string;
@@ -35,4 +42,8 @@ export type BookmarkResponse = {
 export type UpdateRequestData = {
   pinned?: boolean;
   isArchived?: boolean;
+  title?: string;
+  url?: string;
+  description?: string;
+  tags?: [string];
 };
