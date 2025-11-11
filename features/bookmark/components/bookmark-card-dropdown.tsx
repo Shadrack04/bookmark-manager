@@ -16,6 +16,7 @@ import {
 import { useUpdateViewCount } from "../hooks/use-update-view-count";
 import { useUpdateBookmark } from "../hooks/use-update-bookmark";
 import { useBookmarkStore } from "@/store/bookmark-store";
+import { toast } from "sonner";
 
 type BookmarkDropdownProps = {
   id: string;
@@ -65,6 +66,16 @@ export default function BookmarkDropdown({
     setBookmarkItemData(bookmarkData);
     setIsOpen();
   };
+
+  const handleCopyURL = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("Url copied successfully");
+    } catch (error) {
+      toast.error("Failed to copy URL");
+      console.log(error);
+    }
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -76,7 +87,7 @@ export default function BookmarkDropdown({
           Visit
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleCopyURL}>
           <Copy size={16} className="opacity-60" aria-hidden="true" />
           Copy Url
         </DropdownMenuItem>
