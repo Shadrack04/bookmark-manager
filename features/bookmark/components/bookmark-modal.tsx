@@ -25,11 +25,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { BookmarkFormSchema, bookmarkFormSchema } from "../validation";
 
 export default function BookmarkModal() {
   const { isOpen, setIsOpen } = useBookmarkStore();
   const id = useId();
-  const form = useForm();
+  const form = useForm({
+    resolver: zodResolver(bookmarkFormSchema),
+  });
   const { bookmarkItemData } = useBookmarkStore();
 
   useEffect(() => {
@@ -37,6 +41,10 @@ export default function BookmarkModal() {
       form.reset(bookmarkItemData);
     }
   }, [bookmarkItemData, form]);
+
+  const onSubmit = (data: BookmarkFormSchema) => {
+    console.log(data);
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -63,7 +71,7 @@ export default function BookmarkModal() {
         </div>
 
         <Form {...form}>
-          <form>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-4">
               <FormField
                 control={form.control}
@@ -95,12 +103,7 @@ export default function BookmarkModal() {
                       Description*
                     </FormLabel>
                     <FormControl>
-                      <Textarea
-                        id="description"
-                        {...field}
-                        placeholder=""
-                        required
-                      />
+                      <Textarea id="description" {...field} placeholder="" />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
@@ -138,13 +141,7 @@ export default function BookmarkModal() {
                   <FormItem>
                     <FormLabel className=" text-secondary">Tags*</FormLabel>
                     <FormControl>
-                      <Input
-                        id="tags"
-                        type="text"
-                        {...field}
-                        placeholder=""
-                        required
-                      />
+                      <Input id="tags" type="text" {...field} placeholder="" />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
@@ -161,7 +158,7 @@ export default function BookmarkModal() {
                 Cancel
               </Button>
               <Button
-                type="button"
+                type="submit"
                 className=" flex-1 md:flex-none text-secondary"
               >
                 {bookmarkItemData ? "Save Bookmark" : "Add Bookmark"}

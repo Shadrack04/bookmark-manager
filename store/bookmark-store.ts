@@ -1,15 +1,16 @@
+import { BookmarkFormSchema } from "@/features/bookmark/validation";
 import { create } from "zustand";
 
 type BookmarkItemData = {
-  title: string | null;
-  url: string | null;
+  title: string;
+  url: string;
   description?: string | null;
   tags?: [string] | [];
 };
 
 type BookmarkStoreType = {
-  bookmarkItemData: BookmarkItemData | null;
-  setBookmarkItemData: (item: BookmarkItemData) => void;
+  bookmarkItemData: BookmarkFormSchema | null;
+  setBookmarkItemData: (item: BookmarkFormSchema) => void;
   isOpen: boolean;
   setIsOpen: () => void;
 };
