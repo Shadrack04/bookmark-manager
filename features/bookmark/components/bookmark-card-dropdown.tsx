@@ -1,18 +1,12 @@
 import {
   Archive,
-  BoltIcon,
-  ChevronDownIcon,
   Copy,
-  CopyPlusIcon,
   EllipsisVertical,
   ExternalLink,
-  FilesIcon,
-  Layers2Icon,
   Pin,
   SquarePen,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,27 +15,41 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useUpdateViewCount } from "../hooks/use-update-view-count";
 import { useUpdateBookmark } from "../hooks/use-update-bookmark";
+import { useBookmarkStore } from "@/store/bookmark-store";
 
 type BookmarkDropdownProps = {
   id: string;
   pinned: boolean;
   isArchived: boolean;
+  title: string;
+  url: string;
+  tags: [string];
+  description: string;
 };
 
 export default function BookmarkDropdown({
   id,
   pinned,
   isArchived,
+  title,
+  url,
+  tags,
+  description,
 }: BookmarkDropdownProps) {
+  const bookmarkData = {
+    title,
+    url,
+    tags,
+    description,
+  };
   const { mutate: updateViewCount } = useUpdateViewCount(id);
-
   const { mutate: updatePinStatues } = useUpdateBookmark(id, {
     pinned: !pinned,
   });
-
   const { mutate: updateArchivedStatues } = useUpdateBookmark(id, {
     isArchived: !isArchived,
   });
+  const { setBookmarkItemData, setIsOpen } = useBookmarkStore();
 
   const handleUpdateViewCount = () => {
     updateViewCount();
@@ -52,6 +60,10 @@ export default function BookmarkDropdown({
   };
   const handleUpdateArchivedStatus = () => {
     updateArchivedStatues();
+  };
+  const handleEditBookmark = () => {
+    setBookmarkItemData(bookmarkData);
+    setIsOpen();
   };
   return (
     <DropdownMenu>
@@ -74,7 +86,7 @@ export default function BookmarkDropdown({
           {pinned ? "Unpin" : "Pin"}
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleEditBookmark}>
           <SquarePen size={16} className="opacity-60" aria-hidden="true" />
           Edit
         </DropdownMenuItem>

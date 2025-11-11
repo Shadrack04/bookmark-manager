@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useEffect, useId } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -30,22 +30,34 @@ export default function BookmarkModal() {
   const { isOpen, setIsOpen } = useBookmarkStore();
   const id = useId();
   const form = useForm();
+  const { bookmarkItemData } = useBookmarkStore();
+
+  useEffect(() => {
+    if (bookmarkItemData) {
+      form.reset(bookmarkItemData);
+    }
+  }, [bookmarkItemData, form]);
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className=" px-2 md:px-6 py-3 h-auto">
           <Plus className=" size-6 text-white" />
-          <span className=" hidden md:block text-white">Add Bookmark</span>
+          <span className=" hidden md:block text-white">
+            {bookmarkItemData ? "Edit bookmark" : "Add Bookmark"}
+          </span>
         </Button>
       </DialogTrigger>
       <DialogContent className=" w-[80%]">
         <div className="flex flex-col gap-2">
           <DialogHeader className=" text-left">
             <DialogTitle className=" text-secondary text-xl font-bold">
-              Add a bookmark
+              {bookmarkItemData ? "Edit bookmark" : "Add a bookmark"}
             </DialogTitle>
             <DialogDescription className="">
-              Save a link with details to keep your collection organized.
+              {bookmarkItemData
+                ? "Update your saved link details — change the title, description, URL, or tags anytime."
+                : "Save a link with details to keep your collection organized."}
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -140,12 +152,18 @@ export default function BookmarkModal() {
                 )}
               />
             </div>
-            <div className=" flex items-center gap-4 w-full mt-4">
-              <Button variant="outline" className=" flex-1 text-secondary">
+            <div className=" flex items-center md:justify-end gap-4 mt-4">
+              <Button
+                variant="outline"
+                className=" flex-1 md:flex-none text-secondary"
+              >
                 Cancel
               </Button>
-              <Button type="button" className=" flex-1 text-secondary">
-                Add Bookmark
+              <Button
+                type="button"
+                className=" flex-1 md:flex-none text-secondary"
+              >
+                {bookmarkItemData ? "Save Bookmark" : "Add Bookmark"}
               </Button>
             </div>
           </form>
