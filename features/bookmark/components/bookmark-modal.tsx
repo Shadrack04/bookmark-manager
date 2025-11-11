@@ -154,6 +154,7 @@ export default function BookmarkModal() {
             </div>
             <div className=" flex items-center md:justify-end gap-4 mt-4">
               <Button
+                onClick={setIsOpen}
                 variant="outline"
                 className=" flex-1 md:flex-none text-secondary"
               >
