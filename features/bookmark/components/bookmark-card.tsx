@@ -24,13 +24,17 @@ export default function BookmarkCard({
   visitCount,
   lastVisited,
 }: Bookmark) {
+  console.log(favicon);
+  const decodedFavicon: string = favicon.startsWith("https://")
+    ? favicon
+    : "/favicon-frontend-mentor.png";
   return (
     <Card className=" gap-4">
       <CardHeader className=" px-4">
         <div className="flex justify-between">
           <div className=" flex items-center gap-3 ">
             <Image
-              src="/favicon-frontend-mentor.png"
+              src={decodedFavicon}
               alt="Favicon"
               width={60}
               height={60}
