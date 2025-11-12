@@ -64,7 +64,7 @@ export default function BookmarkDropdown({
   };
   const handleEditBookmark = () => {
     setBookmarkItemData(bookmarkData);
-    setIsOpen();
+    setIsOpen(true);
   };
 
   const handleCopyURL = async () => {

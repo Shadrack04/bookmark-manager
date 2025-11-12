@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import { Plus } from "lucide-react";
 import { useBookmarkStore } from "@/store/bookmark-store";
 import { useForm } from "react-hook-form";
@@ -29,31 +29,55 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { BookmarkFormSchema, bookmarkFormSchema } from "../validation";
 
 export default function BookmarkModal() {
-  const { isOpen, setIsOpen } = useBookmarkStore();
-  const id = useId();
+  const { isOpen, setIsOpen, bookmarkItemData, clearBookmarkItemData } =
+    useBookmarkStore();
+
   const form = useForm({
     resolver: zodResolver(bookmarkFormSchema),
   });
-  const { bookmarkItemData } = useBookmarkStore();
+
+  console.log(bookmarkItemData);
 
   useEffect(() => {
-    if (bookmarkItemData) {
-      form.reset(bookmarkItemData);
+    if (isOpen) {
+      if (bookmarkItemData) {
+        form.reset(bookmarkItemData);
+      } else {
+        form.reset({
+          title: "",
+          description: "",
+          url: "",
+          tags: [],
+        });
+      }
     }
-  }, [bookmarkItemData, form]);
+  }, [bookmarkItemData, form, isOpen]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    clearBookmarkItemData();
+  };
 
   const onSubmit = (data: BookmarkFormSchema) => {
     console.log(data);
+    clearBookmarkItemData();
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        setIsOpen(open);
+        if (!open) {
+          clearBookmarkItemData();
+          form.reset();
+        }
+      }}
+    >
       <DialogTrigger asChild>
         <Button className=" px-2 md:px-6 py-3 h-auto">
           <Plus className=" size-6 text-white" />
-          <span className=" hidden md:block text-white">
-            {bookmarkItemData ? "Edit bookmark" : "Add Bookmark"}
-          </span>
+          <span className=" hidden md:block text-white">Add Bookmark</span>
         </Button>
       </DialogTrigger>
       <DialogContent className=" w-[80%]">
@@ -151,7 +175,8 @@ export default function BookmarkModal() {
             </div>
             <div className=" flex items-center md:justify-end gap-4 mt-4">
               <Button
-                onClick={setIsOpen}
+                type="reset"
+                onClick={handleClose}
                 variant="outline"
                 className=" flex-1 md:flex-none text-secondary"
               >
