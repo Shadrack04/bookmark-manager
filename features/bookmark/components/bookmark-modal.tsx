@@ -27,10 +27,14 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BookmarkFormSchema, bookmarkFormSchema } from "../validation";
+import { useCreateBookmark } from "../hooks/use_create-bookmark";
+import { useEditBookmark } from "../hooks/use-edit-bookmark";
 
 export default function BookmarkModal() {
   const { isOpen, setIsOpen, bookmarkItemData, clearBookmarkItemData } =
     useBookmarkStore();
+  const { mutate: createBookmark } = useCreateBookmark();
+  const { mutate: editBookmark } = useEditBookmark();
 
   const form = useForm({
     resolver: zodResolver(bookmarkFormSchema),
@@ -59,8 +63,13 @@ export default function BookmarkModal() {
   };
 
   const onSubmit = (data: BookmarkFormSchema) => {
-    console.log(data);
+    if (bookmarkItemData) {
+      editBookmark({ id: bookmarkItemData.id, payload: data });
+    } else {
+      createBookmark(data);
+    }
     clearBookmarkItemData();
+    setIsOpen(false);
   };
 
   return (

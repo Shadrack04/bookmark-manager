@@ -6,7 +6,7 @@ import {
   UPDATE_VIEW_COUNT_ENDPOINT,
 } from "@/constants/endpoint";
 import api from "@/lib/axios";
-import { BookmarkResponse, UpdateRequestData } from "../types";
+import { BookmarkRequest, BookmarkResponse, UpdateRequestData } from "../types";
 
 export const getAllBookmarks = async (): Promise<BookmarkResponse> => {
   return await api.get(GET_ALL_BOOKMARKS_ENDPOINT);
@@ -20,13 +20,13 @@ export const updateViewCount = async (id: string) => {
   return await api.patch(UPDATE_VIEW_COUNT_ENDPOINT(id));
 };
 
-export const updateBookmarkById = async (
-  id: string,
-  data: UpdateRequestData
-) => {
-  return await api.put(UPDATE_BOOKMARK_BY_ID(id), data);
+export const updateBookmarkById = async (data: UpdateRequestData) => {
+  return await api.put(UPDATE_BOOKMARK_BY_ID(data.id), data.payload);
 };
 
-export const createBookmark = async (data: BookmarkResponse) => {
+export const createBookmark = async (data: BookmarkRequest) => {
   return await api.post(CREATE_BOOKMARK_ENDPOINT, data);
+};
+export const editBookmark = async (data: UpdateRequestData) => {
+  return await api.put(UPDATE_BOOKMARK_BY_ID(data.id), data.payload);
 };

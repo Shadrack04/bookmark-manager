@@ -16,8 +16,8 @@
 export type BookmarkRequest = {
   title: string;
   url: string;
-  description: string;
-  tags: [string];
+  description?: string;
+  tags?: string[];
 };
 
 export type Bookmark = {
@@ -40,10 +40,13 @@ export type BookmarkResponse = {
 };
 
 export type UpdateRequestData = {
-  pinned?: boolean;
-  isArchived?: boolean;
-  title?: string;
-  url?: string;
-  description?: string;
-  tags?: [string];
+  id: string;
+  payload: Partial<{
+    pinned: boolean;
+    isArchived: boolean;
+    title: string;
+    url: string;
+    description: string;
+    tags: string[];
+  }>;
 };

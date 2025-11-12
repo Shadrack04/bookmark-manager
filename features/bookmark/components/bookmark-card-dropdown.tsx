@@ -38,18 +38,15 @@ export default function BookmarkDropdown({
   description,
 }: BookmarkDropdownProps) {
   const bookmarkData = {
+    id,
     title,
     url,
     tags,
     description,
   };
   const { mutate: updateViewCount } = useUpdateViewCount(id);
-  const { mutate: updatePinStatues } = useUpdateBookmark(id, {
-    pinned: !pinned,
-  });
-  const { mutate: updateArchivedStatues } = useUpdateBookmark(id, {
-    isArchived: !isArchived,
-  });
+  const { mutate: updatePinStatues } = useUpdateBookmark();
+  const { mutate: updateArchivedStatues } = useUpdateBookmark();
   const { setBookmarkItemData, setIsOpen } = useBookmarkStore();
 
   const handleUpdateViewCount = () => {
@@ -57,10 +54,20 @@ export default function BookmarkDropdown({
   };
 
   const handleUpdatePinStatus = () => {
-    updatePinStatues();
+    updatePinStatues({
+      id,
+      payload: {
+        pinned: !pinned,
+      },
+    });
   };
   const handleUpdateArchivedStatus = () => {
-    updateArchivedStatues();
+    updateArchivedStatues({
+      id,
+      payload: {
+        isArchived: !isArchived,
+      },
+    });
   };
   const handleEditBookmark = () => {
     setBookmarkItemData(bookmarkData);

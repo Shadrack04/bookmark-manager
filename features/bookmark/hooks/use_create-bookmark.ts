@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createBookmark } from "../services/api";
 import { toast } from "sonner";
+import { UpdateRequestData } from "../types";
 
 export const useCreateBookmark = () => {
   const queryClient = useQueryClient();
