@@ -11,27 +11,37 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export default function ConfirmationDialog() {
+type ConfirmationDialogProps = {
+  dialogTitle: string;
+  dialogDescription: string;
+  onConfirm: () => void;
+  btnVariant?: string;
+  children: React.ReactNode;
+};
+
+export default function ConfirmationDialog({
+  dialogTitle,
+  dialogDescription,
+  onConfirm,
+  btnVariant,
+  children,
+}: ConfirmationDialogProps) {
   return (
-    <AlertDialog open={true}>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Alert dialog</Button>
-      </AlertDialogTrigger>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent className=" w-[30%] flex flex-col gap-6 bg-foreground">
         <AlertDialogHeader>
           <AlertDialogTitle className=" text-secondary">
-            Archive bookmark
+            {dialogTitle}
           </AlertDialogTitle>
-          <AlertDialogDescription>
-            Are you sure you want archive this bookmark?
-          </AlertDialogDescription>
+          <AlertDialogDescription>{dialogDescription}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className=" text-secondary border-0.5 bg-background">
             Cancel
           </AlertDialogCancel>
-          <AlertDialogAction className=" text-secondary">
-            Archive
+          <AlertDialogAction className=" text-secondary" asChild>
+            <Button onClick={onConfirm}>Archive</Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -17,6 +17,7 @@ import { useUpdateViewCount } from "../hooks/use-update-view-count";
 import { useUpdateBookmark } from "../hooks/use-update-bookmark";
 import { useBookmarkStore } from "@/store/bookmark-store";
 import { toast } from "sonner";
+import ConfirmationDialog from "./confirmation-dialog";
 
 type BookmarkDropdownProps = {
   id: string;
@@ -62,6 +63,7 @@ export default function BookmarkDropdown({
     });
   };
   const handleUpdateArchivedStatus = () => {
+    console.log("archive");
     updateArchivedStatues({
       id,
       payload: {
@@ -109,10 +111,22 @@ export default function BookmarkDropdown({
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={handleUpdateArchivedStatus}>
-          <Archive size={16} className="opacity-60" aria-hidden="true" />
-          {isArchived ? "Unarchive" : "Archive"}
-        </DropdownMenuItem>
+        <ConfirmationDialog
+          dialogTitle={isArchived ? "Unarchive bookmark" : "Archive bookmark"}
+          dialogDescription={`Are you sure you want ${
+            isArchived ? "Unarchive" : "Archive"
+          } this bookmark`}
+          onConfirm={() => handleUpdateArchivedStatus()}
+        >
+          <DropdownMenuItem
+            onSelect={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <Archive size={16} className="opacity-60" aria-hidden="true" />
+            {isArchived ? "Unarchive" : "Archive"}
+          </DropdownMenuItem>
+        </ConfirmationDialog>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -40,8 +40,6 @@ export default function BookmarkModal() {
     resolver: zodResolver(bookmarkFormSchema),
   });
 
-  console.log(bookmarkItemData);
-
   useEffect(() => {
     if (isOpen) {
       if (bookmarkItemData) {
