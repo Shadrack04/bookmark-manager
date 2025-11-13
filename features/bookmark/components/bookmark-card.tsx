@@ -25,9 +25,10 @@ export default function BookmarkCard({
   lastVisited,
 }: Bookmark) {
   console.log(favicon);
-  const decodedFavicon: string = favicon.startsWith("https://")
-    ? favicon
-    : "/favicon-frontend-mentor.png";
+  const decodedFavicon: string =
+    favicon.startsWith("https://") || favicon.startsWith("http://")
+      ? favicon
+      : "/favicon-frontend-mentor.png";
   return (
     <Card className=" gap-4">
       <CardHeader className=" px-4">

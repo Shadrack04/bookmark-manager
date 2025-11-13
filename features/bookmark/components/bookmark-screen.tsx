@@ -3,6 +3,7 @@ import React from "react";
 import BookmarkCard from "./bookmark-card";
 import Bookmarks from "./bookmarks";
 import { useGetBookmarks } from "../hooks/useGetBookmarks";
+import ConfirmationDialog from "./confirmation-dialog";
 
 export default function BookmarkScreen() {
   return (
@@ -12,6 +13,7 @@ export default function BookmarkScreen() {
         <Sort />
       </div>
       <Bookmarks />
+      <ConfirmationDialog />
     </section>
   );
 }
