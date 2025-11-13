@@ -16,6 +16,7 @@ type ConfirmationDialogProps = {
   dialogDescription: string;
   onConfirm: () => void;
   btnVariant?: string;
+  confirmText: string;
   children: React.ReactNode;
 };
 
@@ -24,6 +25,7 @@ export default function ConfirmationDialog({
   dialogDescription,
   onConfirm,
   btnVariant,
+  confirmText,
   children,
 }: ConfirmationDialogProps) {
   return (
@@ -41,7 +43,7 @@ export default function ConfirmationDialog({
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction className=" text-secondary" asChild>
-            <Button onClick={onConfirm}>Archive</Button>
+            <Button onClick={onConfirm}>{confirmText}</Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

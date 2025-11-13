@@ -116,6 +116,7 @@ export default function BookmarkDropdown({
           dialogDescription={`Are you sure you want ${
             isArchived ? "Unarchive" : "Archive"
           } this bookmark`}
+          confirmText={isArchived ? "Unarchive" : "Archive"}
           onConfirm={() => handleUpdateArchivedStatus()}
         >
           <DropdownMenuItem
