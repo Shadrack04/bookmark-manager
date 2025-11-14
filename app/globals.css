@@ -125,6 +125,10 @@
   @apply px-4 md:px-6;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 /* .custom-sort-menu [data-radix-dropdown-menu-item-indicator] {
   display: none !important;
 } */

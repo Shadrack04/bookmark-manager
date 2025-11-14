@@ -3,10 +3,7 @@ import { COOKIE_NAME } from "./constants";
 
 export default function middleware(req: NextRequest) {
   const session = req.cookies.get(COOKIE_NAME)?.value;
-  console.log(session);
-
   const path = req.nextUrl.pathname;
-
   const isAuthPage = path.startsWith("/auth");
   const isProtectedRoute = path === "/" || path.startsWith("/bookmark");
 

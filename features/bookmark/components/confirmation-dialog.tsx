@@ -10,6 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 
 type ConfirmationDialogProps = {
   dialogTitle: string;
@@ -31,7 +32,10 @@ export default function ConfirmationDialog({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
-      <AlertDialogContent className=" w-[30%] flex flex-col gap-6 bg-foreground">
+      <AlertDialogContent className=" w-[30%] flex flex-col gap-6 bg-foreground border-1 border-primary">
+        <AlertDialogCancel className=" absolute shadow-none bg-none dark:bg-none dark:border-none top-2 right-2 border-none bg-transparent">
+          <X className=" text-secondary" />
+        </AlertDialogCancel>
         <AlertDialogHeader>
           <AlertDialogTitle className=" text-secondary">
             {dialogTitle}
@@ -39,7 +43,7 @@ export default function ConfirmationDialog({
           <AlertDialogDescription>{dialogDescription}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className=" text-secondary border-0.5 bg-background">
+          <AlertDialogCancel className=" text-secondary border-[1px] border-primary bg-transparent">
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction className=" text-secondary" asChild>
