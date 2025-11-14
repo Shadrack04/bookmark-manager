@@ -1,41 +1,71 @@
 "use client";
 
 import { useId } from "react";
-
-import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Moon, Sun } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/store/theme-store";
 
 export default function ThemeSwitch() {
   const id = useId();
-
   const { isDarkTheme, setIsDarkTheme } = useTheme();
-  console.log(isDarkTheme);
 
   return (
-    <div onClick={(e) => e.stopPropagation()}>
-      <div className="relative inline-grid h-9 grid-cols-[1fr_1fr] items-center text-sm font-medium">
-        <Switch
-          id={id}
-          checked={isDarkTheme}
-          onCheckedChange={setIsDarkTheme}
-          className="peer absolute inset-0 h-[inherit] w-auto rounded-md data-[state=unchecked]:bg-input/50 [&_span]:z-10 [&_span]:h-full [&_span]:w-1/2 [&_span]:rounded-sm [&_span]:transition-transform [&_span]:duration-300 [&_span]:ease-[cubic-bezier(0.16,1,0.3,1)] [&_span]:data-[state=checked]:translate-x-full [&_span]:data-[state=checked]:rtl:-translate-x-full"
-        />
-        <span className="pointer-events-none relative ms-0.5 flex items-center justify-center px-2 text-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:invisible peer-data-[state=unchecked]:translate-x-full peer-data-[state=unchecked]:rtl:-translate-x-full">
-          <span className="text-[10px] font-medium uppercase">
-            <Moon className=" text-secondary" />
-          </span>
-        </span>
-        <span className="pointer-events-none relative me-0.5 flex items-center justify-center px-2 text-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:-translate-x-full peer-data-[state=checked]:text-background peer-data-[state=unchecked]:invisible peer-data-[state=checked]:rtl:translate-x-full">
-          <span className="text-[10px] font-medium uppercase">
-            <Sun className=" text-secondary" />
-          </span>
-        </span>
-      </div>
-      {/* <Label htmlFor={id} className="sr-only">
-        Labeled switch
-      </Label> */}
+    <div
+      className="relative inline-flex items-center"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <Switch
+        id={id}
+        checked={isDarkTheme}
+        onCheckedChange={setIsDarkTheme}
+        className="
+          peer relative h-10 w-20 rounded-md transition-all duration-500
+          data-[state=checked]:bg-[#004342]
+          data-[state=unchecked]:bg-background
+          
+          [&_span]:absolute
+          [&_span]:top-1/2
+          [&_span]:left-1
+          [&_span]:-translate-y-1/2
+          [&_span]:h-8
+          [&_span]:w-8
+          [&_span]:rounded-md
+          [&_span]:bg-white
+          [&_span]:flex
+          [&_span]:items-center
+          [&_span]:justify-center
+          [&_span]:shadow-md
+          [&_span]:transition-transform
+          [&_span]:duration-500
+          [&_span]:ease-in-out
+          [&_span]:data-[state=checked]:translate-x-[2.75rem]
+          [&_span]:data-[state=unchecked]:translate-x-0
+        "
+      />
+
+      {/* Sun Icon */}
+      <Sun
+        className="
+          pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 h-5 w-5
+          text-yellow-600 transition-all duration-500
+          peer-data-[state=checked]:opacity-0
+          peer-data-[state=checked]:scale-50
+          peer-data-[state=unchecked]:opacity-100
+          peer-data-[state=unchecked]:scale-100
+        "
+      />
+
+      {/* Moon Icon */}
+      <Moon
+        className="
+          pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5
+          text-zinc-200 transition-all duration-500
+          peer-data-[state=checked]:opacity-100
+          peer-data-[state=checked]:scale-100
+          peer-data-[state=unchecked]:opacity-0
+          peer-data-[state=unchecked]:scale-50
+        "
+      />
     </div>
   );
 }

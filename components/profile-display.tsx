@@ -43,7 +43,12 @@ export default function ProfileDisplay() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={12} className="w-64 bg-foreground">
+      <DropdownMenuContent
+        sideOffset={12}
+        align="end"
+        alignOffset={4}
+        className="w-64 bg-foreground"
+      >
         <DropdownMenuLabel className="flex min-w-0 flex-row items-center gap-4">
           <div>
             <Avatar className=" size-12">
