@@ -15,6 +15,8 @@ type BookmarkStoreType = {
   clearBookmarkItemData: () => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  searchQuery: string | null;
+  setSearchQuery: (query: string) => void;
 };
 
 export const useBookmarkStore = create<BookmarkStoreType>((set) => ({
@@ -24,4 +26,6 @@ export const useBookmarkStore = create<BookmarkStoreType>((set) => ({
   setBookmarkItemData: (bookmarkItem: BookmarkItemData) =>
     set({ bookmarkItemData: bookmarkItem }),
   clearBookmarkItemData: () => set({ bookmarkItemData: null }),
+  searchQuery: null,
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
 }));
