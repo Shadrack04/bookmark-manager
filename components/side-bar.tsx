@@ -3,13 +3,11 @@
 import React from "react";
 import Logo from "./logo";
 import { Archive, Home, LucideIcon } from "lucide-react";
-import Link from "next/link";
 import Tags from "./tags";
 import { usePathname } from "next/navigation";
 import { useBookmarkFilterStore } from "@/store/bookmark-filter-store";
 
 type NavLinks = {
-  href: string;
   name: string;
   icon: LucideIcon;
   isActive: boolean;
@@ -19,13 +17,11 @@ const navLinks: NavLinks[] = [
   {
     icon: Home,
     name: "Home",
-    href: "/",
     isActive: false,
   },
   {
     icon: Archive,
     name: "Archived",
-    href: "/archived",
     isActive: true,
   },
 ];
@@ -41,7 +37,7 @@ export default function SideBar() {
         <Logo />
       </div>
       <div className=" flex flex-col gap-1">
-        {navLinks?.map(({ name, href, icon: Icon, isActive }) => (
+        {navLinks?.map(({ name, icon: Icon, isActive }) => (
           <div
             onClick={() => setIsArchived(name === "Archived")}
             key={name}

@@ -8,8 +8,10 @@ import {
 import api from "@/lib/axios";
 import { BookmarkRequest, BookmarkResponse, UpdateRequestData } from "../types";
 
-export const getAllBookmarks = async (): Promise<BookmarkResponse> => {
-  return await api.get(GET_ALL_BOOKMARKS_ENDPOINT);
+export const getAllBookmarks = async (
+  query: string
+): Promise<BookmarkResponse> => {
+  return await api.get(GET_ALL_BOOKMARKS_ENDPOINT(query));
 };
 
 export const getBookmarkById = async (id: string) => {

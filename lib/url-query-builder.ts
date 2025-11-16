@@ -8,7 +8,6 @@ export const urlQueryBuilder = (params: Record<string, any>) => {
     } else {
       query.set(key, value);
     }
-
-    return query.toString();
   });
+  return query.toString();
 };
