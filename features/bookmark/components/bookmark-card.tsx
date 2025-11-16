@@ -65,8 +65,8 @@ export default function BookmarkCard({
         <div className="w-full h-[1px] my-1 bg-muted/50" />
       </CardHeader>
 
-      <CardContent className=" px-4">
-        <p className=" text-sm text-muted">{description}</p>
+      <CardContent className=" px-4 flex-1 flex flex-col justify-between">
+        <p className=" text-sm text-muted h-auto">{description}</p>
         <div className=" flex items-center gap-3 my-4">
           {tags?.map((tag) => (
             <TagCard key={tag} tagName={tag} />
