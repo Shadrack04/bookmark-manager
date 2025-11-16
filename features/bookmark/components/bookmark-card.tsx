@@ -24,7 +24,6 @@ export default function BookmarkCard({
   visitCount,
   lastVisited,
 }: Bookmark) {
-  console.log(favicon);
   const decodedFavicon: string =
     favicon.startsWith("https://") || favicon.startsWith("http://")
       ? favicon

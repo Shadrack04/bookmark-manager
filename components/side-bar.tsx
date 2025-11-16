@@ -6,11 +6,13 @@ import { Archive, Home, LucideIcon } from "lucide-react";
 import Link from "next/link";
 import Tags from "./tags";
 import { usePathname } from "next/navigation";
+import { useBookmarkFilterStore } from "@/store/bookmark-filter-store";
 
 type NavLinks = {
   href: string;
   name: string;
   icon: LucideIcon;
+  isActive: boolean;
 };
 
 const navLinks: NavLinks[] = [
@@ -18,16 +20,19 @@ const navLinks: NavLinks[] = [
     icon: Home,
     name: "Home",
     href: "/",
+    isActive: false,
   },
   {
     icon: Archive,
     name: "Archived",
     href: "/archived",
+    isActive: true,
   },
 ];
 
 export default function SideBar() {
   const pathName = usePathname();
+  const { isArchived, setIsArchived } = useBookmarkFilterStore();
 
   if (pathName.startsWith("/auth")) return null;
   return (
@@ -36,15 +41,18 @@ export default function SideBar() {
         <Logo />
       </div>
       <div className=" flex flex-col gap-1">
-        {navLinks?.map(({ name, href, icon: Icon }) => (
-          <Link
+        {navLinks?.map(({ name, href, icon: Icon, isActive }) => (
+          <div
+            onClick={() => setIsArchived(name === "Archived")}
             key={name}
-            href={href}
-            className=" text-muted hover:text-secondary hover:bg-background/80 py-2 px-2 flex rounded-md items-center gap-2"
+            // href={href}
+            className={`${
+              isActive === isArchived ? " bg-background/80" : ""
+            } text-muted hover:text-secondary cursor-pointer hover:bg-background/80 py-2 px-2 flex rounded-md items-center gap-2`}
           >
             <Icon />
             <span>{name}</span>
-          </Link>
+          </div>
         ))}
       </div>
 
