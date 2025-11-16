@@ -2,19 +2,19 @@ import { create } from "zustand";
 
 interface FilterState {
   search: string;
-  sortBy: string | null;
+  sortBy: string | undefined;
   tags: string[];
   isArchived: boolean | null;
 
   setSearch: (value: string) => void;
-  setSortBy: (value: string | null) => void;
+  setSortBy: (value: string | undefined) => void;
   setTags: (tags: string[]) => void;
   setIsArchived: (value: boolean | null) => void;
 }
 
 export const useBookmarkFilterStore = create<FilterState>((set) => ({
   search: "",
-  sortBy: null,
+  sortBy: "recently-added",
   tags: [],
   isArchived: false,
 

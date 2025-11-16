@@ -13,9 +13,11 @@ import {
 
 import { ArrowDownUp, CheckIcon } from "lucide-react";
 import { Card } from "./ui/card";
+import { useBookmarkFilterStore } from "@/store/bookmark-filter-store";
 
 export default function Sort() {
-  const [sortOption, setSortOption] = useState<string>("recently-added");
+  // const [sortOption, setSortOption] = useState<string>("recently-added");
+  const { sortBy, setSortBy } = useBookmarkFilterStore();
 
   return (
     <DropdownMenu>
@@ -26,18 +28,13 @@ export default function Sort() {
         </Card>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" custom-sort-menu w-48 bg-foreground">
-        <DropdownMenuRadioGroup
-          value={sortOption}
-          onValueChange={setSortOption}
-        >
+        <DropdownMenuRadioGroup value={sortBy} onValueChange={setSortBy}>
           <DropdownMenuRadioItem
             value="recently-added"
             className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
           >
             Recently added
-            {sortOption === "recently-added" && (
-              <CheckIcon className="size-4" />
-            )}
+            {sortBy === "recently-added" && <CheckIcon className="size-4" />}
           </DropdownMenuRadioItem>
 
           <DropdownMenuRadioItem
@@ -45,9 +42,7 @@ export default function Sort() {
             className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
           >
             Recently visited
-            {sortOption === "recently-visited" && (
-              <CheckIcon className="size-4" />
-            )}
+            {sortBy === "recently-visited" && <CheckIcon className="size-4" />}
           </DropdownMenuRadioItem>
 
           <DropdownMenuRadioItem
@@ -55,7 +50,7 @@ export default function Sort() {
             className=" pl-2 [&>span.absolute.left-2]:hidden flex items-center justify-between"
           >
             Most visited
-            {sortOption === "most-visited" && <CheckIcon className="size-4" />}
+            {sortBy === "most-visited" && <CheckIcon className="size-4" />}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
