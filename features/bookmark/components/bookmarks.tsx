@@ -4,12 +4,17 @@ import React from "react";
 import BookmarkCard from "./bookmark-card";
 import { useGetBookmarks } from "../hooks/useGetBookmarks";
 import Loading from "@/features/bookmark/components/loading";
+import EmptyBookmark from "./empty-bookmark";
 
 export default function Bookmarks() {
   const { data, isPending, isError, error } = useGetBookmarks();
 
   if (isPending) {
     return <Loading />;
+  }
+
+  if (data?.data.data.length === 0) {
+    return <EmptyBookmark />;
   }
 
   if (isError) {
