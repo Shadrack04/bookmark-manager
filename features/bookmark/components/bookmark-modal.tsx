@@ -131,7 +131,7 @@ export default function BookmarkModal() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className=" text-secondary">
-                      Description*
+                      Description
                     </FormLabel>
                     <FormControl>
                       <Textarea id="description" {...field} placeholder="" />
@@ -170,7 +170,7 @@ export default function BookmarkModal() {
                 name="tags"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className=" text-secondary">Tags*</FormLabel>
+                    <FormLabel className=" text-secondary">Tags</FormLabel>
                     <FormControl>
                       <Input id="tags" type="text" {...field} placeholder="" />
                     </FormControl>
