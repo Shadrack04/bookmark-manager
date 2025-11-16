@@ -1,4 +1,12 @@
-export const urlQueryBuilder = (params: Record<string, any>) => {
+type QueryParam =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | Array<string | number | boolean>;
+
+export const urlQueryBuilder = (params: Record<string, QueryParam>) => {
   const query = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     if (value === null || value === "" || value === undefined) return;
