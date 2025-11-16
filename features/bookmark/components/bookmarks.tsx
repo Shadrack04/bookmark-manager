@@ -5,6 +5,7 @@ import BookmarkCard from "./bookmark-card";
 import { useGetBookmarks } from "../hooks/useGetBookmarks";
 import Loading from "@/features/bookmark/components/loading";
 import EmptyBookmark from "./empty-bookmark";
+import Error from "./error";
 
 export default function Bookmarks() {
   const { data, isPending, isError, error } = useGetBookmarks();
@@ -17,8 +18,8 @@ export default function Bookmarks() {
     return <EmptyBookmark />;
   }
 
-  if (isError) {
-    console.log(error);
+  if (error) {
+    return <Error />;
   }
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">

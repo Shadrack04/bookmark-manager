@@ -9,6 +9,6 @@ export const useGetBookmarks = () => {
   return useQuery({
     queryKey: ["bookmarks", { search, isArchived, tags, sortBy }],
     queryFn: () => getAllBookmarks(query),
-    retry: true,
+    retry: 3,
   });
 };
