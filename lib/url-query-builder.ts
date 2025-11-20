@@ -1,10 +1,4 @@
-type QueryParam =
-  | string
-  | number
-  | boolean
-  | null
-  | undefined
-  | Array<string | number | boolean>;
+type QueryParam = string | boolean | null | undefined | Array<string>;
 
 export const urlQueryBuilder = (params: Record<string, QueryParam>) => {
   const query = new URLSearchParams();

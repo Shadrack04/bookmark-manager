@@ -12,11 +12,7 @@ type TagItemProps = {
   tagCount?: number;
 };
 
-export default function TagItem({
-  tagName,
-  tagCount,
-  isChecked,
-}: TagItemProps) {
+export default function TagItem() {
   return (
     <div className=" flex items-center justify-between">
       <div className=" flex items-center gap-2">
