@@ -6,25 +6,26 @@ import { Archive, Home, LucideIcon } from "lucide-react";
 import Tags from "./tags";
 import { usePathname } from "next/navigation";
 import { useBookmarkFilterStore } from "@/store/bookmark-filter-store";
+import { navLinks } from "@/constants";
 
-type NavLinks = {
-  name: string;
-  icon: LucideIcon;
-  isActive: boolean;
-};
+// type NavLinks = {
+//   name: string;
+//   icon: LucideIcon;
+//   isActive: boolean;
+// };
 
-const navLinks: NavLinks[] = [
-  {
-    icon: Home,
-    name: "Home",
-    isActive: false,
-  },
-  {
-    icon: Archive,
-    name: "Archived",
-    isActive: true,
-  },
-];
+// const navLinks: NavLinks[] = [
+//   {
+//     icon: Home,
+//     name: "Home",
+//     isActive: false,
+//   },
+//   {
+//     icon: Archive,
+//     name: "Archived",
+//     isActive: true,
+//   },
+// ];
 
 export default function SideBar() {
   const pathName = usePathname();
