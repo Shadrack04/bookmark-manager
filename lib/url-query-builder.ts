@@ -8,7 +8,7 @@ export const urlQueryBuilder = (params: Record<string, QueryParam>) => {
     if (Array.isArray(value)) {
       value.forEach((v) => query.append(key, v));
     } else {
-      // @ts-ignore
+      // @ts-expect-error
       query.set(key, value);
     }
   });
