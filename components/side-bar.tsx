@@ -33,11 +33,11 @@ export default function SideBar() {
 
   if (pathName.startsWith("/auth")) return null;
   return (
-    <div className=" hidden lg:flex flex-col gap-2 w-82 border-1 bg-foreground min-h-screen px-4">
+    <div className=" hidden lg:flex flex-col gap-2 w-82 border-1 bg-foreground min-h-screen px-4 sticky top-0">
       <div className="h-20 lg:h-18 flex items-center">
         <Logo />
       </div>
-      <div className=" flex flex-col gap-1">
+      <div className=" flex flex-col gap-1 overflow-auto">
         {navLinks?.map(({ name, icon: Icon, isActive }) => (
           <div
             onClick={() => setIsArchived(name === "Archived")}

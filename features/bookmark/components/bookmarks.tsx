@@ -22,7 +22,7 @@ export default function Bookmarks() {
     return <Error />;
   }
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">
+    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4 overflow-y-auto max-h-[80vh] scrollbar-hide">
       {data?.data.data.map((item) => (
         <BookmarkCard
           key={item._id}

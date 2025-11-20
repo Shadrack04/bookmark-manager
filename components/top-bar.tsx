@@ -15,7 +15,7 @@ export default function TopBar() {
   if (pathName.startsWith("/auth")) return null;
 
   return (
-    <nav className=" custom-padding flex items-center justify-between w-full h-20 lg:h-18 bg-foreground">
+    <nav className=" sticky top-0 custom-padding flex items-center justify-between w-full h-20 lg:h-18 bg-foreground">
       <div className=" flex items-center gap-2 content-stretch md:gap-4">
         {/* <Menu className=" text-secondary p-2 border-border border-2 size-12 rounded-lg cursor-pointer" /> */}
         <SideDrawer />
