@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react";
 import BookmarkCard from "./bookmark-card";
 import { useGetBookmarks } from "../hooks/useGetBookmarks";
 import Loading from "@/features/bookmark/components/loading";
@@ -22,7 +23,12 @@ export default function Bookmarks() {
     return <Error />;
   }
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4 overflow-y-auto max-h-[80vh] scrollbar-hide">
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4 overflow-y-auto max-h-[80vh] scrollbar-hide"
+    >
       {data?.data.data.map((item) => (
         <BookmarkCard
           key={item._id}
@@ -41,6 +47,6 @@ export default function Bookmarks() {
       {/* <BookmarkCard />
       <BookmarkCard />
       <BookmarkCard /> */}
-    </div>
+    </motion.div>
   );
 }
