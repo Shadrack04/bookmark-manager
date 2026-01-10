@@ -15,3 +15,5 @@ export const UPDATE_VIEW_COUNT_ENDPOINT = (id: string) =>
   `/bookmark/${id}/view`;
 
 export const UPDATE_BOOKMARK_BY_ID = (id: string) => `/bookmark/${id}`;
+
+export const GET_ALL_TAGS = "/tags";

@@ -1,12 +1,18 @@
 import {
   CREATE_BOOKMARK_ENDPOINT,
   GET_ALL_BOOKMARKS_ENDPOINT,
+  GET_ALL_TAGS,
   GET_BOOKMARK_ENDPOINT,
   UPDATE_BOOKMARK_BY_ID,
   UPDATE_VIEW_COUNT_ENDPOINT,
 } from "@/constants/endpoint";
 import api from "@/lib/axios";
-import { BookmarkRequest, BookmarkResponse, UpdateRequestData } from "../types";
+import {
+  BookmarkRequest,
+  BookmarkResponse,
+  TagResponseType,
+  UpdateRequestData,
+} from "../types";
 
 export const getAllBookmarks = async (
   query: string
@@ -31,4 +37,8 @@ export const createBookmark = async (data: BookmarkRequest) => {
 };
 export const editBookmark = async (data: UpdateRequestData) => {
   return await api.put(UPDATE_BOOKMARK_BY_ID(data.id), data.payload);
+};
+
+export const getAllTags = async (): Promise<TagResponseType> => {
+  return await api.get(GET_ALL_TAGS);
 };

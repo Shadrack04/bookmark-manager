@@ -50,3 +50,14 @@ export type UpdateRequestData = {
     tags: string[];
   }>;
 };
+
+type Tag = {
+  _id: string;
+  tagName: string;
+};
+
+export type TagResponseType = {
+  data: {
+    data: Tag[];
+  };
+};
