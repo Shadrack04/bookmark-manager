@@ -29,6 +29,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { BookmarkFormSchema, bookmarkFormSchema } from "../validation";
 import { useCreateBookmark } from "../hooks/use_create-bookmark";
 import { useEditBookmark } from "../hooks/use-edit-bookmark";
+import TagInput from "@/components/tag-input";
 
 export default function BookmarkModal() {
   const { isOpen, setIsOpen, bookmarkItemData, clearBookmarkItemData } =
@@ -172,7 +173,11 @@ export default function BookmarkModal() {
                   <FormItem>
                     <FormLabel className=" text-secondary">Tags</FormLabel>
                     <FormControl>
-                      <Input id="tags" type="text" {...field} placeholder="" />
+                      {/* <Input id="tags" type="text" {...field} placeholder="" /> */}
+                      <TagInput
+                        value={field.value ?? []}
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
