@@ -72,15 +72,17 @@ export default function BookmarkCard({
 
       <CardContent className=" px-4 flex-1 flex flex-col justify-between">
         <p className=" text-sm text-muted h-auto">{description}</p>
-        <div className=" flex items-center gap-3 my-4">
-          {tags?.map((tag) => (
-            <TagCard key={tag} tagName={tag} />
-          ))}
-          {/* <TagCard tagName="Practice" />
+        <div>
+          <div className=" flex items-center gap-3 my-4">
+            {tags?.map((tag) => (
+              <TagCard key={tag} tagName={tag} />
+            ))}
+            {/* <TagCard tagName="Practice" />
           <TagCard tagName="Practice" /> */}
-        </div>
+          </div>
 
-        <div className="w-full h-[1px] my-1 bg-muted/50" />
+          <div className="w-full h-[1px] my-1 bg-muted/50" />
+        </div>
       </CardContent>
 
       <CardFooter className=" justify-between">
