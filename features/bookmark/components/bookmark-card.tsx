@@ -4,7 +4,14 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Calendar, Clock, EllipsisVertical, Eye, Pin } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  EllipsisVertical,
+  Eye,
+  Pin,
+  PinOff,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -102,7 +109,11 @@ export default function BookmarkCard({
             <span className=" text-xs">{formatDate(createdAt)}</span>
           </div>
         </div>
-        <Pin className=" size-4 text-primary" />
+        {pinned ? (
+          <PinOff className=" size-4 text-primary cursor-pointer" />
+        ) : (
+          <Pin className=" size-4 text-secondary/50 cursor-pointer" />
+        )}
       </CardFooter>
     </Card>
   );
