@@ -10,6 +10,7 @@ import Error from "./error";
 
 export default function Bookmarks() {
   const { data, isPending, isError, error } = useGetBookmarks();
+  console.log(data?.data.data);
 
   if (isPending) {
     return <Loading />;
@@ -42,6 +43,7 @@ export default function Bookmarks() {
           lastVisited={item.lastVisited}
           pinned={item.pinned}
           visitCount={item.visitCount}
+          createdAt={item.createdAt}
         />
       ))}
       {/* <BookmarkCard />

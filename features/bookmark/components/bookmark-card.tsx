@@ -11,6 +11,7 @@ import React from "react";
 import TagCard from "./tag-card";
 import BookmarkDropdown from "./bookmark-card-dropdown";
 import { Bookmark } from "../types";
+import { formatDate } from "@/helper-functions/format-date";
 
 export default function BookmarkCard({
   favicon,
@@ -23,11 +24,15 @@ export default function BookmarkCard({
   _id,
   visitCount,
   lastVisited,
+  createdAt,
 }: Bookmark) {
   const decodedFavicon: string =
     favicon.startsWith("https://") || favicon.startsWith("http://")
       ? favicon
       : "/favicon-frontend-mentor.png";
+
+  const lastVisit = formatDate(lastVisited ? lastVisited : createdAt);
+
   return (
     <Card className=" gap-4">
       <CardHeader className=" px-4">
@@ -87,12 +92,12 @@ export default function BookmarkCard({
 
           <div className=" flex items-center gap-1 text-muted">
             <Clock className=" size-4" />
-            <span className=" text-xs">24 Sep</span>
+            <span className=" text-xs">{lastVisit}</span>
           </div>
 
           <div className=" flex items-center gap-1 text-muted">
             <Calendar className=" size-4" />
-            <span className=" text-xs">10 Jan</span>
+            <span className=" text-xs">{formatDate(createdAt)}</span>
           </div>
         </div>
         <Pin className=" size-4 text-primary" />

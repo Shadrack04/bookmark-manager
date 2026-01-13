@@ -52,6 +52,7 @@ export default function BookmarkDropdown({
 
   const handleUpdateViewCount = () => {
     updateViewCount();
+    window.open(url, "_blank");
   };
 
   const handleUpdatePinStatus = () => {

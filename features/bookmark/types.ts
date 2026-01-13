@@ -31,6 +31,7 @@ export type Bookmark = {
   tags: [string];
   favicon: string;
   pinned: boolean;
+  createdAt: string;
 };
 
 export type BookmarkResponse = {

@@ -30,9 +30,9 @@ export default function TagItem({ tagName, tagCount }: TagItemProps) {
           {tagName}
         </Label>
       </div>
-      <div className=" size-6 flex items-center justify-center rounded-full bg-background">
+      {/* <div className=" size-6 flex items-center justify-center rounded-full bg-background">
         <p className=" text-muted ">2</p>
-      </div>
+      </div> */}
     </div>
   );
 }
